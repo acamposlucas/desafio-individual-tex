@@ -1,0 +1,401 @@
+@use "./variables.scss" as v;
+@use "./mixins.scss" as m;
+@use "./utils.scss";
+@use "./base.scss";
+@use "./about.scss";
+
+h1,
+h2 {
+	color: v.$clr-neutral-900;
+	font-size: v.$fs-xl;
+}
+
+p {
+	color: v.$clr-neutral-700;
+	font-size: v.$fs-base;
+	font-weight: v.$fw-200;
+}
+
+.header {
+	border-bottom: 1px solid v.$clr-neutral-500;
+	@include m.shadow;
+
+	.header__container {
+		padding-block: 2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+
+		@media (min-width: 768px) {
+			flex-direction: row;
+		}
+
+		.header__logo {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+
+			i {
+				font-size: calc(32px + 3vh);
+			}
+
+			strong {
+				display: none;
+
+				@media (min-width: 768px) {
+					display: block;
+					font-weight: v.$fw-200;
+					font-size: v.$fs-lg;
+				}
+			}
+		}
+	}
+
+	.main-navigation {
+		align-items: center;
+		display: flex;
+		gap: 1rem;
+		justify-content: space-between;
+		list-style: none;
+		padding-inline: 0;
+		width: 100%;
+
+		li a {
+			text-decoration: none;
+			color: inherit;
+
+			&:visited {
+				color: inherit;
+			}
+		}
+	}
+}
+
+.main__container {
+	position: relative;
+	@media (min-width: 768px) {
+		@include m.container;
+	}
+}
+
+.hero {
+	margin-block: 2rem;
+
+	.hero__call {
+		color: v.$clr-neutral-900;
+		display: block;
+		font-size: v.$fs-xl;
+		font-weight: v.$fw-600;
+		margin-inline: auto;
+		text-align: center;
+	}
+
+	.hero__container {
+		margin-block: 2rem;
+		display: flex;
+		flex-direction: column;
+
+		@media (min-width: 768px) {
+			align-items: center;
+			flex-direction: row;
+			justify-content: center;
+			gap: 2rem;
+
+			@include m.container;
+		}
+
+		.text-content {
+			color: v.$clr-neutral-700;
+			order: 1;
+			width: 90%;
+			margin-inline: auto;
+
+			@media (min-width: 768px) {
+				align-self: flex-end;
+				max-width: calc(10vw + 256px);
+				order: 0;
+				flex: 1;
+			}
+
+			span {
+				font-size: v.$fs-sm;
+			}
+		}
+
+		.gallery {
+			order: 0;
+			position: relative;
+			display: flex;
+			gap: 0.5rem;
+
+			@media (min-width: 768px) {
+				order: 1;
+				flex: 1;
+			}
+
+			img {
+				object-fit: cover;
+				width: 100%;
+				max-height: 512px;
+				@include m.shadow;
+
+				@media (min-width: 768px) {
+					border-radius: 8px;
+				}
+
+				&:nth-child(even) {
+					display: none;
+
+					@media (min-width: 1280px) {
+						display: block;
+						align-self: center;
+					}
+				}
+			}
+		}
+	}
+}
+
+.about-us {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	justify-content: center;
+	margin-block: 2rem;
+	position: relative;
+	text-align: center;
+
+	@include m.container;
+
+	@media (min-width: 1024px) {
+		&:after,
+		&:before {
+			background-size: contain;
+			background-repeat: no-repeat;
+			content: "";
+			height: 66.66%;
+			max-width: 234px;
+			opacity: 0.8;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+		}
+
+		&:after {
+			background-image: url("../assets/sketch-3.jpg");
+			right: 0;
+		}
+
+		&:before {
+			background-image: url("../assets/sketch-2.png");
+			background-size: cover;
+			background-position: center center;
+			left: 0;
+		}
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	img {
+		object-fit: cover;
+		order: 0;
+		max-height: 512px;
+		width: 100%;
+
+		@media (min-width: 768px) {
+			border-radius: 8px;
+			object-fit: fill;
+			order: initial;
+			max-width: calc(25vw + 128px);
+		}
+	}
+
+	p {
+		align-self: center;
+		max-width: 20rem;
+		order: 1;
+
+		@media (min-width: 768px) {
+			order: initial;
+		}
+	}
+}
+
+.experience {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+
+	@media (min-width: 768px) {
+		@include m.container;
+	}
+
+	h2,
+	p {
+		text-align: center;
+	}
+
+	.container {
+		h2 {
+			margin-block-end: 2rem;
+		}
+	}
+
+	.gallery {
+		display: grid;
+		gap: 1rem;
+
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			border-radius: 6px;
+
+			@include m.shadow;
+		}
+	}
+}
+
+.footer__container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-block-start: 4rem;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	.external__links {
+		list-style: none;
+		display: flex;
+		gap: 2rem;
+		padding: 0;
+
+		li a {
+			text-decoration: none;
+			
+			&:visited {
+				color: inherit;
+			}
+
+			i {
+				font-size: v.$fs-2xl;
+				color: v.$clr-neutral-800;
+			}
+		}
+	}
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100%;
+	max-width: 24rem;
+
+	fieldset {
+		border: 0;
+		padding: 0;
+	}
+
+	.form-group {
+		width: 100%;
+
+		input {
+			background-color: transparent;
+			border: 0;
+			border-bottom: 1px solid v.$clr-neutral-700;
+			outline: none;
+			padding-block: 0.5rem;
+			width: 100%;
+
+			&:focus {
+				border-bottom-color: v.$clr-accent;
+			}
+
+			&:not(:placeholder-shown):invalid:not(:focus) {
+				color: v.$clr-accent;
+				border-bottom-color: v.$clr-accent;
+			}
+
+			&:not(:placeholder-shown):invalid:not(:focus) + span {
+				color: v.$clr-accent;
+				display: block;
+			}
+		}
+
+		span[role="alert"] {
+			display: none;
+		}
+	}
+
+	button[type="submit"] {
+		align-self: flex-start;
+		background-color: transparent;
+		border: 1px solid v.$clr-neutral-900;
+		border-radius: 4px;
+		color: v.$clr-neutral-900;
+		cursor: pointer;
+		padding-inline: 1rem;
+		padding-block: 0.5rem;
+		transition: all 150ms ease-out;
+		
+		&:hover {
+			background-color: v.$clr-neutral-900;
+			color: v.$clr-neutral-200;
+		}
+	}
+
+}
+
+.copyright {
+	display: flex;
+	justify-content: space-between;
+	padding-block: 0.5rem;
+	
+	span a {
+		text-decoration: none;
+		color: inherit;
+
+		&:visited {
+			color: inherit;
+		}
+	}
+}
+
+.stripes {
+	&:after,
+	&:before {
+		background-color: v.$clr-neutral-300;
+		border-radius: 6px;
+		content: "";
+		display: block;
+		height: 100%;
+		max-width: 96px;
+		min-height: 100vh;
+		position: absolute;
+		top: 2.5rem;
+		width: 100%;
+		z-index: -100;
+	}
+
+	&:after {
+		right: 2rem;
+	}
+
+	&:before {
+		right: 8rem;
+	}
+}
