@@ -323,11 +323,12 @@ p {
   border-bottom-color: rgb(230, 57, 70);
 }
 .form .form-group input:not(:placeholder-shown):invalid:not(:focus) + span {
-  color: rgb(230, 57, 70);
   display: block;
 }
 .form .form-group span[role=alert] {
+  color: rgb(230, 57, 70);
   display: none;
+  font-size: clamp(0.8125rem, 0.7768rem + 0.1786vw, 0.9375rem);
 }
 .form button[type=submit] {
   align-self: flex-start;

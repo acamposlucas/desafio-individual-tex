@@ -285,7 +285,7 @@ p {
 
 		li a {
 			text-decoration: none;
-			
+
 			&:visited {
 				color: inherit;
 			}
@@ -331,13 +331,14 @@ p {
 			}
 
 			&:not(:placeholder-shown):invalid:not(:focus) + span {
-				color: v.$clr-accent;
 				display: block;
 			}
 		}
 
 		span[role="alert"] {
+			color: v.$clr-accent;
 			display: none;
+			font-size: v.$fs-sm;
 		}
 	}
 
